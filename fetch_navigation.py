@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import requests
 
 from api import Node
@@ -16,4 +14,4 @@ def get_navigation_from_site(url, title):
     return root
 
 if __name__ == "__main__":
-    print get_navigation_from_site("http://www.ma.edu.tum.de/", "Fakultätsseite")
+    print(get_navigation_from_site("http://www.ma.edu.tum.de/mitarbeiter", "Fakultätsseite"))
