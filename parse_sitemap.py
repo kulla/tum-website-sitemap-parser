@@ -103,7 +103,7 @@ class TUMSitemap(object):
     def to_html(self):
         env = Environment(loader = FileSystemLoader("."))
 
-        template = env.get_template("outline.template.html")
+        template = env.get_template("template.html")
 
         return template.render(sitemap = self.fetch_sitemap())
 
