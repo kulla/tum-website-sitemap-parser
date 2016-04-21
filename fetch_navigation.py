@@ -2,8 +2,9 @@ import requests
 
 from api import Node
 from bs4 import BeautifulSoup
+from jinja2 import Environment, FileSystemLoader
 
-class SitemapFetcher(object):
+class TUMSitemap(object):
 
     def __init__(self, root_name, base_url):
         self.root = Node(root_name, base_url)
@@ -39,7 +40,15 @@ class SitemapFetcher(object):
 
         return root
 
-if __name__ == "__main__":
-    fetcher = SitemapFetcher("Fakultätsseite", "http://www.ma.edu.tum.de/")
+    def to_html(self):
+        env = Environment(loader = FileSystemLoader("."))
 
-    print(fetcher.fetch_sitemap())
+        template = env.get_template("outline.template.html")
+
+        return template.render(sitemap = self.fetch_sitemap())
+
+if __name__ == "__main__":
+    sitemap = TUMSitemap("Fakultätsseite", "http://www.ma.edu.tum.de/")
+
+    with open("outline.html", "w") as fd:
+        fd.write(sitemap.to_html())

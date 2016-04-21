@@ -1,0 +1,20 @@
+{% macro outline_node(node, level=0) -%}
+	<ul>
+		{% for child in node.children -%}
+			<li><a href="{{child.url}}">{{ child.name }}</a>
+				{{ outline_node(child, level+1) }}
+			</li>
+		{%- endfor %}
+	</ul>
+{%- endmacro %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Sitemap {{ sitemap.name }}</title>
+	</head>
+	<body>
+		<h1>Navigationsstruktr {{ sitemap.name }}</h1>
+		{{ outline_node(sitemap) }}
+	</body>
+</html>
