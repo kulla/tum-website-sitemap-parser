@@ -19,8 +19,6 @@ class TUMSitemap(object):
 
                 self.visited.add(next_url)
 
-                print(next_url)
-
                 if next_url.startswith(self.root.url):
                     self.root.merge(self.parse_sitemap_from_site(next_url))
             else:
