@@ -43,11 +43,13 @@ class Node(object):
         return result
 
     def merge(self, other):
-        assert self.name == other.name
+        assert self.name.startswith(other.name) or other.name.startswith(self.name)
 
         self.url = self.url or other.url
 
-        assert other.url == None or (self.url == other.url)
+        assert (other.url == None or
+                self.url.rstrip("/").startswith(other.url.rstrip("/")) or
+                other.url.rstrip("/").startswith(self.url.rstrip("/")))
 
         self.children = self.children or other.children
 
