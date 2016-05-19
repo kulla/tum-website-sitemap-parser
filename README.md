@@ -1,0 +1,1 @@
+Dies ist ein Tool, mit dem die Sitemap eines TU-Auftritts geparst werden kann. Ursprünglich wurde es entwickelt, um die Seitenstruktur der Seiten www.edu.tum.de und www.ma.edu.tum.de in einem Word-Dokument in einer verschachtelten Liste zu speichern. Über das Makefile kann dieses Programm aufgerufen werden.
